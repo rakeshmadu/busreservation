@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<body style="background-color:rgb(182, 232, 255);"></body>
+<center>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title></title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="{% url 'home' %}">LOGIN<span class="sr-only"></span></a>
+                    <a class="nav-item nav-link" href="{% url 'findbus' %}">SEARCH BUS</a> {% if request.user.is_active %}
+                    <a class="nav-item nav-link " href="{% url 'signout' %}">///</a> {% else %}
+                    <a class="nav-item nav-link " href="{% url 'signup' %}">REGISTER</a> {% endif %}
+
+
+                </div>
+            </div>
+            </div>
+        </nav>
+        {% block content %} {% endblock %}
+
+    </body>
+</center>
+
+</html>

@@ -1,0 +1,86 @@
+{% extends 'myapp/base.html' %} {% block content %}
+<h3>{{msg}}</h3>
+
+<table class="table table-striped">
+
+    <head>
+        <style>
+            table {
+                font-family: 'Times New Roman', Times, serif;
+                width: 25%;
+            }
+            
+            td,
+            th {
+                border: 1px #a03232;
+                text-align: left;
+                padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+                background-color: #21bae98c;
+            }
+        </style>
+    </head>
+    <tr>
+        <thead>
+
+            <th>ID</th>
+            <th>Bustype</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Seats available</th>
+            <!-- <th>Price</th> -->
+            <th>Date</th>
+            <th>Time</th>
+            <th>Busno</th>
+
+        </thead>
+    </tr>
+
+    {% for row in bus_list %}
+    <tr>
+
+        <td>{{row.id }}</td>
+        <td>{{row.bus_name}}</td>
+        <td>{{row.source}}</td>
+        <td>{{row.dest}}</td>
+        <td>{{row.rem}}</td>
+        <!-- <td>{{row.price}}</td> -->
+        <td>{{row.date}}</td>
+        <td>{{row.time}}</td>
+        <td>{{row.busno}}</td>
+
+
+    </tr>
+    {% endfor %}
+</table>
+<form action="{% url 'bookings' %}" method="post">
+
+
+    <h3>BOOK BUS</h3>
+    {% csrf_token %}
+    <div class="col-auto">
+        <label for="example-email-input" class="col-2 col-form-label">SELECT ID</label>
+        <div class="col-5">
+            <input name='bus_id' class="form-control" type="number" id="example-email-input">
+        </div>
+    </div>
+    <div class="col=auto">
+        <label for="example-email-input" class="col-2 col-form-label">SEATS REQUIRED</label>
+        <div class="col-5">
+            <input name='no_seats' class="form-control" type="number">
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="pull-right">
+        <button type="submit" class="btn btn-primary float-left">CONFIRM</button>
+    </div>
+
+
+    {{error}}
+
+</form>
+
+{% endblock %}

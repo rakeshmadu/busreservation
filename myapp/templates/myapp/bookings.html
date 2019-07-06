@@ -1,0 +1,105 @@
+{% block content %}
+
+<body style="background-color:rgba(203, 212, 211, 0.555);"></body>
+<center>
+    <h2>****E-TICKET****</h2>
+</center>
+<center>
+    <form action="{% url 'home' %}" method="post">
+        {% csrf_token %}
+        <div class="modal-body">
+            <ul class="list-group list-group-flush">
+                <html>
+
+                <head>
+                    <style>
+                        table {
+                            font-family: 'Times New Roman', Times, serif;
+                            width: 25%;
+                        }
+                        
+                        td,
+                        th {
+                            border: 1px #a03232;
+                            text-align: left;
+                            padding: 8px;
+                        }
+                        
+                        tr:nth-child(even) {
+                            background-color: #04aed88c;
+                        }
+                    </style>
+                </head>
+
+                <body>
+                    <table>
+
+
+                        <tr class="list-group-item">
+                            <th>Passenger name</th>
+                            <th>Bus type & No</th>
+                        </tr>
+
+                        <tr>
+                            <td class="list-group-item">
+                                {{book.name}}</td>
+                            <td class="list-group-item">
+                                {{book.bus_name}},{{bus.busno}}</td>
+
+
+                        </tr>
+                        <tr>
+                            <th>Source</th>
+                            <th>Destination</th>
+                        </tr>
+                        <td class="list-group-item">
+                            {{bus.source}}</td>
+                        <td class="list-group-item">
+                            {{book.dest}}</td>
+                        <tr>
+
+                            <th>Departure date</th>
+                            <th>Departure time</th>
+                        </tr>
+                        <tr>
+
+                            <td class="list-group-item">
+                                {{book.date}}</td>
+                            <td class="list-group-item">
+                                {{book.time}}</td>
+                        </tr>
+                        <!-- <tr>
+                            <th>Departure time</th>
+                             <th>Amount</th> -->
+                        <!-- </tr> -->
+                        <!-- 
+                        <tr>
+                            <td class="list-group-item">
+                                {{book.time}}</td> -->
+                        <!-- <td class="list-group-item">
+                                {{cost}}</td>
+                        </tr> -->
+                        </tr>
+                    </table>
+            </ul>
+        </div>
+    </form>
+    <html>
+
+    <body>
+        <tr> Booking Date and Time
+        </tr>
+
+
+        <p id="demo"></p>
+
+        <script>
+            var d = new Date();
+            document.getElementById("demo").innerHTML = d;
+        </script>
+
+    </body>
+
+    </html>
+</center>
+{% endblock %}
